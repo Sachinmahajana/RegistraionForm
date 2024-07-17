@@ -1,0 +1,78 @@
+﻿@model RegistrationForm.Models.Userstable
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Addemployee</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.ActionLink("View Employee List", "Index")
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(e => e.UserId)
+
+                    @Html.AntiForgeryToken()
+                    <div class="card">
+                        <div class="card-header bg-warning">
+                            <h3>Registration Form</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <label>Full Name</label>
+                                @Html.TextBoxFor(e => e.FullName, new { @class = "form-control" })
+                                <span>@Html.ValidationMessageFor(e => e.FullName)</span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>Mobile Number</label>
+                                @Html.TextBoxFor(e => e.MobileNumber, new { @class = "form-control" })
+                                <span>@Html.ValidationMessageFor(e => e.MobileNumber)</span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>Email Id</label>
+                                @Html.TextBoxFor(e => e.EmailId, new { @class = "form-control" })
+                                <span>@Html.ValidationMessageFor(e => e.EmailId)</span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>User Name</label>
+                                @Html.TextBoxFor(e => e.Username, new { @class = "form-control" })
+                                <span>@Html.ValidationMessageFor(e => e.Username)</span>
+                            </div>
+
+                            <div class="mb-2">
+                                <label>Password</label>
+                                @Html.TextBoxFor(e => e.Password, new { @class = "form-control" })
+                                <span>@Html.ValidationMessageFor(e => e.Password)</span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

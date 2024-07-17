@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RegistrationForm.Models.Userstable>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>FullName</th>
+                <th>MobileNumber</th>
+                <th>EmailId</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var i in Model)
+            {
+                <tr>
+                    <td>@i.UserId</td>
+                    <td>@i.FullName</td>
+                    <td>@i.MobileNumber</td>
+                    <td>@i.EmailId</td>
+                    <td>@i.Username</td>
+                    <td>@i.Password</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { @id = i.UserId })
+                        &nbsp;
+                        @Html.ActionLink("X", "Delete", new { @id = i.UserId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
